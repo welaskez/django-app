@@ -1,3 +1,15 @@
 from django.contrib import admin
 
-# Register your models here.
+from goods.models import Categoreis, Products
+
+# admin.site.register(Categoreis)
+# admin.site.register(Products)
+
+@admin.register(Categoreis)
+class CategoreisAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+
+
+@admin.register(Products)
+class ProductsAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
